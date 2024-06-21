@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func minSubArrayLen(target int, nums []int) int {
-    minSize := 0
 	n := len(nums)
+	minSize := 0
 
 	i := 0
 	j := 0
@@ -15,12 +15,10 @@ func minSubArrayLen(target int, nums []int) int {
 
 		for total >= target {
 			total -= nums[i]
-			if minSize != 0 {
-				minSize = min((j - i) + 1, minSize)
-			}else {
+			if minSize == 0 {
 				minSize = (j - i) + 1
 			}
-			
+			minSize = min((j - i) + 1, minSize)
 			i++
 		}
 
